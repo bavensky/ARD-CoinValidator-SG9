@@ -1,12 +1,17 @@
-int pin = 3;
-int sum = 0;
+/*
+   CMMC
+   Apirak Sang-ngenchai
+*/
+
+int pin = 3; // use interrupe pin 3
+int sum = 0; // sum coin input
 unsigned long duration;
 int count = 0;
 
 void setup() {
   Serial.begin(9600);
-  pinMode(pin, INPUT_PULLUP);
-  attachInterrupt(digitalPinToInterrupt(pin), coin, LOW);
+  pinMode(pin, INPUT_PULLUP); // pull up signal 
+  attachInterrupt(digitalPinToInterrupt(pin), coin, LOW); // detect low signal about 20 ms.
 }
 
 void loop() {
@@ -15,7 +20,7 @@ void loop() {
 }
 
 void coin() {
-  for (int i = 0; i <= 2; i++)  {
+  for (int i = 0; i <= 5; i++)  {
     duration = pulseIn(pin, LOW, 1000000);
     float time = duration / 1000.00;
     //    Serial.print("DelT=");
